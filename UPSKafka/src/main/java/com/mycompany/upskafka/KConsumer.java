@@ -26,13 +26,13 @@ public class KConsumer {
     public static void consume() {
         Logger logger = LoggerFactory.getLogger("my_consumer");
         List<String> brokers = new ArrayList<>();
-        brokers.add("localhost:9092");
+        brokers.add("0.0.0.0:9092");
         logger.info("Starting consumer...");
         Properties props = new Properties();
         //props.put("zookeeper.connect", "129.146.75.92:2181");
         props.put("bootstrap.servers", brokers);
         props.put("group.id", "ben2");
-        props.put("schema.registry.url", "http://localhost:8081");
+        props.put("schema.registry.url", "http://0.0.0.0:8081");
         props.put("key.deserializer",
             io.confluent.kafka.serializers.KafkaAvroDeserializer.class);
         props.put("value.deserializer",

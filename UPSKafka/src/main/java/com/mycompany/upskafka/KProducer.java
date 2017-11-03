@@ -18,13 +18,13 @@ class KProducer {
         
         logger.info("Starting producer...");
         Properties props = new Properties();
-        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "0.0.0.0:9092");
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,
                 io.confluent.kafka.serializers.KafkaAvroSerializer.class);
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
                 io.confluent.kafka.serializers.KafkaAvroSerializer.class);
         
-        props.put("schema.registry.url", "http://localhost:8081");
+        props.put("schema.registry.url", "http://0.0.0.0:8081");
         KafkaProducer producer = new KafkaProducer(props);
         
         String key = "key1";
